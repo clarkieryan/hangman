@@ -1,0 +1,153 @@
+{
+    "firework": {
+        "timeline": [
+            {
+                "frame": 1,
+                "particleId": "firework_explosion",
+                "xPos": 16,
+                "yPos": 234,
+                "scaleX": 1.72,
+                "scaleY": 1.72,
+                "filter" : 
+                {
+                    "glowColor": "0xABB4EF"
+                }   
+            },
+            {
+                "frame": 34,
+                "particleId": "firework_explosion",
+                "xPos": 220,
+                "yPos": 84,
+                "scaleX": 1.7,
+                "scaleY": 1.7,
+                "filter" : 
+                {
+                    "glowColor": "0xFFFF00"
+                }   
+            },
+            {
+                "frame": 66,
+                "particleId": "firework_explosion",
+                "xPos": 542,
+                "yPos": 30,
+                "scaleX": 1.3,
+                "scaleY": 1.3,
+                "filter" : 
+                {
+                    "glowColor": "0xFF0000"
+                }   
+            },
+            {
+                "frame": 67,
+                "particleId": "firework_explosion",
+                "xPos": 106,
+                "yPos": 76,
+                "scaleX": 2.8,
+                "scaleY": 2.8,
+                "filter" : 
+                {
+                    "glowColor": "0xFFFF33"
+                }   
+            },
+            {
+                "frame": 90,
+                "particleId": "firework_explosion",
+                "xPos": 342,
+                "yPos": 242,
+                "scaleX": 1.3,
+                "scaleY": 1.3,
+                "filter" : 
+                {
+                    "brightness": 0.42,
+                    "hue": -0.75
+                }   
+            },
+            {
+                "frame": 112,
+                "particleId": "firework_explosion",
+                "xPos": 464,
+                "yPos": 198,
+                "scaleX": 1.85,
+                "scaleY": 1.85,
+                "filter" : 
+                {
+                    "glowColor": "0xFFE8A4"
+                }   
+            },
+            {
+                "frame": 113,
+                "particleId": "firework_explosion",
+                "xPos": 104,
+                "yPos": 228,
+                "scaleX": 1.42,
+                "scaleY": 1.42,
+                "filter" : 
+                {
+                    "glowColor": "0xFFCC00"
+                }   
+            },
+            {
+                "frame": 132,
+                "particleId": "firework_explosion",
+                "xPos": 568,
+                "yPos": 280,
+                "scaleX": 1.37,
+                "scaleY": 1.37,
+                "filter" : 
+                {
+                    "glowColor": "0xFF3737"
+                }   
+            },
+            {
+                "frame": 138,
+                "particleId": "firework_explosion",
+                "xPos": 118,
+                "yPos": 68,
+                "scaleX": 1.56,
+                "scaleY": 1.56,
+                "filter" : 
+                {
+                    "hue": -1
+                }   
+            },
+            {
+                "frame": 152,
+                "particleId": "firework_explosion",
+                "xPos": 212,
+                "yPos": 100,
+                "scaleX": 1.67,
+                "scaleY": 1.67,
+                "filter" : 
+                {
+                    "glowColor": "0xFFCC66"
+                }   
+            },
+            {
+                "frame": 169,
+                "particleId": "firework_explosion",
+                "xPos": 496,
+                "yPos": 197,
+                "scaleX": 1.48,
+                "scaleY": 1.48,
+                "filter" : 
+                {
+                    "brightness": 1,
+                    "saturation": 0.75,
+                    "hue": -0.57
+                }   
+            },
+            {
+                "frame": 190,
+                "particleId": "firework_explosion",
+                "xPos": 502,
+                "yPos": 146,
+                "scaleX": 1.85,
+                "scaleY": 1.85,
+                "filter" : 
+                {
+                    "glowColor": "0xFFFF33"
+                }   
+            }
+        ]
+    }
+}
