@@ -1,3 +1,5 @@
+require('./gameEnd');
+
 (function(){
 
 	var Character = require('./character');
@@ -41,6 +43,8 @@
 		this._currentWord = null;
 
 		this._createLetterButtons();
+
+		this._gameEnd = new game.GameEnd();
 
 		this._outputText = new libs.pixi.Text("ddd", {font: "35px Arial Bold", align: "left", "fill": "white"});
 		this._outputText.position.x = defaultSettings.outputTextPosition.x; 
@@ -100,14 +104,15 @@
 	HangmanMain.prototype._letterClickHandler = function(letter) {
 		letter = letter.toLowerCase();
 
-		//Assuming we have already used it or not
+		//Check if the letter has already been selected
 		if(this._usedLetters.indexOf(letter) === -1){
+			//Find the letter and hide it.
 			var sprite = this._letterButtons[letterString.indexOf(letter.toUpperCase())];
 			sprite.alpha = 0.5;
 			this._usedLetters.push(letter);
 
+			//If it's a letter in the word then update the on screen word
 			if(this._currentWord.indexOf(letter) > -1 ){
-				console.log("Winning Letter");
 				this._updateWord(letter);
 				
 				if(this._wordString.indexOf('_') === -1){
