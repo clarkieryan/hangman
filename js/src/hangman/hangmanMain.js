@@ -16,7 +16,7 @@ require('./gameEnd');
 			x: 20, 
 			y: 220
 		},
-		totalFailedAttempts: 6
+		totalFailedAttempts: 7
 	};
 
 	var words = require('../data/words.json'); 
@@ -41,6 +41,7 @@ require('./gameEnd');
 		this._stage.addChild(this._character.getCharacter());
 
 		this._currentWord = null;
+		this._isActive = false;
 
 		this._createLetterButtons();
 
@@ -53,6 +54,8 @@ require('./gameEnd');
 		this._stage.addChild(this._outputText);
 
 		libs.globalEventBus.addListener('game.startGame', this._onStartGame.bind(this));
+		libs.globalEventBus.addListener('game.end', this._onGameEnd.bind(this));
+
 	};
 
 	/**
@@ -90,6 +93,9 @@ require('./gameEnd');
 	 */
 	HangmanMain.prototype._onStartGame = function() {
 		//Get the level off difficulty
+		
+		this._isActive = true;
+
 		this._currentWord = this._getRandomword();
 		this._wordString = this._currentWord.replace(/[^0-9]/g, "_");
 		this._outputText.setText(this._wordString);
@@ -102,35 +108,36 @@ require('./gameEnd');
 	 * @return {[type]}        [description]
 	 */
 	HangmanMain.prototype._letterClickHandler = function(letter) {
-		letter = letter.toLowerCase();
+		if(this._isActive){
+			letter = letter.toLowerCase();
 
-		//Check if the letter has already been selected
-		if(this._usedLetters.indexOf(letter) === -1){
-			//Find the letter and hide it.
-			var sprite = this._letterButtons[letterString.indexOf(letter.toUpperCase())];
-			sprite.alpha = 0.5;
-			this._usedLetters.push(letter);
+			//Check if the letter has already been selected
+			if(this._usedLetters.indexOf(letter) === -1){
+				//Find the letter and hide it.
+				var sprite = this._letterButtons[letterString.indexOf(letter.toUpperCase())];
+				sprite.alpha = 0.5;
+				this._usedLetters.push(letter);
 
-			//If it's a letter in the word then update the on screen word
-			if(this._currentWord.indexOf(letter) > -1 ){
-				this._updateWord(letter);
-				
-				if(this._wordString.indexOf('_') === -1){
-					libs.globalEventBus.emit('game.end', true);
+				//If it's a letter in the word then update the on screen word
+				if(this._currentWord.indexOf(letter) > -1 ){
+					this._updateWord(letter);
+					
+					if(this._wordString.indexOf('_') === -1){
+						libs.globalEventBus.emit('game.end', true);
+					}
+
+				} else {
+					
+					if(this._state.failedAttempts < defaultSettings.totalFailedAttempts){
+						this._state.failedAttempts += 1;
+						this._character.updateCharacter(this._state.failedAttempts);
+
+						if(this._state.failedAttempts === defaultSettings.totalFailedAttempts){
+							libs.globalEventBus.emit('game.end', false);
+						}	
+					}
+
 				}
-
-			} else {
-				console.log("Non-Winning letter");
-
-				if(this._state.failedAttempts < defaultSettings.totalFailedAttempts){
-					this._state.failedAttempts += 1;
-					this._character.updateCharacter(this._state.failedAttempts);
-
-					if(this._state.failedAttempts === defaultSettings.totalFailedAttempts){
-						libs.globalEventBus.emit('game.end', false);
-					}	
-				}
-
 			}
 		}
 	};
@@ -161,6 +168,17 @@ require('./gameEnd');
 
 	};
 
+	HangmanMain.prototype._onGameEnd = function(win){
+
+		this._isActive = false;
+
+		if(win){
+			this._outputText.setText('Congratulations you have won')
+		} else {
+			this._outputText.setText('Sorry no more lives');
+		}
+	};
+
 	/**
 	 * Replaces a character at a certain position in the string.
 	 * @param  {[type]} string    [description]
@@ -171,8 +189,6 @@ require('./gameEnd');
 	HangmanMain.prototype._replaceAt = function(string, index, character) {
 		return string.substr(0, index) + character + string.substr(index+character.length);
 	};
-
-
 
 	game.HangmanMain = HangmanMain;
 

@@ -6,43 +6,50 @@
 			{
 				"url": "img/hangman/V1.png",
 				position: {
-					x: 60, 
-					y: 20
+					x: 0, 
+					y: 170
 				}
 			},
 			{
 				"url": "img/hangman/V2.png",
 				position: {
-					x: 90, 
-					y: 20
+					x: 20, 
+					y: 190
 				}
 			},
 			{
 				"url": "img/hangman/V3.png",
 				position: {
-					x: 0, 
-					y: 0
+					x: 30, 
+					y: 10
 				}
 			},
 			{
 				"url": "img/hangman/V4.png",
 				position: {
-					x: 0, 
-					y: 0
+					x: -205, 
+					y: -170
 				}
 			},
 			{
 				"url": "img/hangman/V5.png",
 				position: {
-					x: 0, 
-					y: 0
+					x: -175, 
+					y: -190
 				}
 			},
 			{
 				"url": "img/hangman/V6.png",
 				position: {
-					x: 0, 
-					y: 0
+					x: 120, 
+					y: 10
+				}
+			}, 
+			{
+				"url": "img/hangman/man.png",
+				position: {
+					x: 110, 
+					y: 10
 				}
 			}
 		]
@@ -79,6 +86,7 @@
 			this._sprites[i].alpha = 1;
 		}
 	};
+	
 	game.Character = Character;
 
 })();
